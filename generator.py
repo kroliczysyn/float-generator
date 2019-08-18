@@ -1,49 +1,44 @@
 import random
 import csv
 
-def get_value():
-    return float(value)
+input_list = []
+output_list = []
+iterations = 1000000
 
-
-lista_wej = []
-lista_wyj = []
-
-for i in range(5):
+for i in range(iterations):
     a = random.uniform(0, 1000)
     b = random.uniform(0, 1000)
-    lista_wej.append(a)
-    lista_wej.append(b)
+    input_list.append(a)
+    input_list.append(b)
     c = random.uniform(-3, 3)
     d = random.uniform(-3, 3)
     x = a - c
     y = b - d
-    lista_wyj.append(x)
-    lista_wyj.append(y)
-
-print("Teraz lista idzieeeeee: " + str(lista_wej))
-print("Teraz druga lista idzieeeeee: " + str(lista_wyj))
+    output_list.append(x)
+    output_list.append(y)
 
 with open('input.csv', 'w', newline='') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=' ',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    spamwriter.writerow(lista_wej)
+    spamwriter.writerow(input_list)
 
-print("teraz pójdą dane wejściowe")
+print("Input list: ")
 
 with open('input.csv', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
-        print(', '.join(row))
+        for i in range(iterations):
+            print(row[i])
 
 with open('output.csv', 'w', newline='') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=' ',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    spamwriter.writerow(lista_wyj)
+    spamwriter.writerow(output_list)
 
-print("teraz pójdą dane wyjściowe")
+print("Output list: ")
 
 with open('output.csv', newline='') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in spamreader:
-        print(', '.join(row))
-
+        for i in range(iterations):
+            print(row[i])
